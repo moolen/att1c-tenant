@@ -1,0 +1,12 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+  # this should not be possible when setting up proper service accounts
+  namespace: tenant-a-app2
+spec:
+  chart:
+    spec:
+      version: ">=1.0.0-alpha"
+  values:
+    replicaCount: 1
