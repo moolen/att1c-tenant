@@ -1,12 +1,25 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: podinfo
+  labels:
+    app: foobar
+  name: foobar
   # this should not be possible when setting up proper service accounts
   namespace: tenant-a-app2
 spec:
-  chart:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foobar
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: foobar
     spec:
-      version: ">=1.0.0-alpha"
-  values:
-    replicaCount: 1
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}
