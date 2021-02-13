@@ -3,7 +3,7 @@ kind: HelmRelease
 metadata:
   name: podinfo
 spec:
-  serviceAccountName: flux:deploy
+  serviceAccountName: flux.deploy
   releaseName: podinfo
   chart:
     spec:
